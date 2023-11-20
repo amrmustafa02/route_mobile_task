@@ -17,12 +17,10 @@ class PostsDetailsCubit extends Cubit<PostsDetailsState> {
     var commentsResponse = await _useCase.getPostComments(postId);
     commentsResponse.fold(
       (l) {
-
         emit(PostsDetailsError(message: l.message!));
         return;
       },
       (r) {
-        print(r);
         emit(PostsDetailsSuccess(comments: r));
         return;
       },
