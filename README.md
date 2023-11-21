@@ -1,4 +1,3 @@
-![page_details](https://github.com/amrmustafa02/route_mobile_task/assets/78182930/d329008d-c8b1-4fc1-acfc-30934ccfeea8)
 # INJOY ♥️♥️
 Simple Socil app Develope with clean architecture, solid and dependency injection 
 
