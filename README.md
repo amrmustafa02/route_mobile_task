@@ -1,5 +1,5 @@
 # INJOY ♥️♥️
-Simple Socil app Develope with clean architecture, solid and dependency injection 
+Simple social app develope with clean architecture, solid and dependency injection 
 
 
 ## Screenshots
