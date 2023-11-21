@@ -21,12 +21,12 @@ class PostDetailsRemoteSource extends PostDetailsDataSource {
   }
 
   List<CommentModel> _handleComments(List<dynamic> comments) {
-    List<CommentModel> comments = [];
+    List<CommentModel> finalComments = [];
 
     for (var comment in comments) {
-      comments.add(CommentModel.fromJson(comment));
+      finalComments.add(CommentModel.fromJson(comment));
     }
 
-    return comments;
+    return finalComments;
   }
 }

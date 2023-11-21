@@ -13,15 +13,12 @@ class PostDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery
-        .of(context)
-        .size;
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
       body: BlocProvider(
         create: (context) =>
-        getIt<PostsDetailsCubit>()
-          ..getPostComment(post.postId!),
+            getIt<PostsDetailsCubit>()..getPostComment(post.postId!),
         child: Container(
           padding: const EdgeInsets.all(8),
           child: Column(
@@ -99,8 +96,21 @@ class PostDetailsPage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Center(
+                child: Text(
+                  "Comments",
+                  style: TextStyle(color: Colors.white, fontSize: 22),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
               // comments
-              const PostsDetailsComments(),
+
+              const Expanded(child: PostsDetailsComments()),
             ],
           ),
         ),

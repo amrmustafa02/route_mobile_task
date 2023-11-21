@@ -20,6 +20,7 @@ class CommentItem extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       width: size.width,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -30,26 +31,13 @@ class CommentItem extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Expanded(
-                child: Text(
-                  commentModel.name!,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Text(
-                  commentModel.email!,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                  ),
+              Text(
+                commentModel.name ?? "",
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
                 ),
               ),
             ],
@@ -57,14 +45,11 @@ class CommentItem extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Expanded(
-            child: Text(
-              commentModel.body!,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-              ),
+          Text(
+            commentModel.body ?? "",
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 22,
             ),
           ),
         ],

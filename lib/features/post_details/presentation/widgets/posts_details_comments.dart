@@ -10,33 +10,39 @@ class PostsDetailsComments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: BlocBuilder<PostsDetailsCubit, PostsDetailsState>(
-        builder: (context, state) {
-          if (state is PostsDetailsInitial) return const LoadingItem();
+    return BlocBuilder<PostsDetailsCubit, PostsDetailsState>(
+      builder: (context, state) {
+        if (state is PostsDetailsInitial) return const LoadingItem();
 
-          if (state is PostsDetailsError) {
-            return Center(
+        if (state is PostsDetailsError) {
+          return Center(
+            child: Text(
+              state.message,
+              style: const TextStyle(color: Colors.white, fontSize: 22),
+            ),
+          );
+        }
+
+        if (state is PostsDetailsSuccess) {
+          var comments = state.comments;
+          if (comments.isEmpty) {
+            return const Center(
               child: Text(
-                state.message,
-                style: const TextStyle(color: Colors.white, fontSize: 22),
+                "No Comments Found",
+                style: TextStyle(fontSize: 22, color: Colors.white),
               ),
             );
           }
+          return ListView.builder(
+            itemCount: comments.length,
+            itemBuilder: (context, index) => CommentItem(
+              commentModel: comments[index],
+            ),
+          );
+        }
 
-          if (state is PostsDetailsSuccess) {
-            var comments = state.comments;
-            return ListView.builder(
-              itemCount: comments.length,
-              itemBuilder: (context, index) => CommentItem(
-                commentModel: comments[index],
-              ),
-            );
-          }
-
-          return Container();
-        },
-      ),
+        return Container();
+      },
     );
   }
 }

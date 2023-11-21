@@ -14,7 +14,7 @@ class ApiManager {
     _dio = Dio();
   }
 
-  Future<List<dynamic>> getPosts({int page = 1}) async {
+  Future<List<dynamic>> getPosts({int page = 100}) async {
 
     var response = await _dio
         .get(_baseUrl + EndPoints.posts, queryParameters: {"page": page});
@@ -30,6 +30,8 @@ class ApiManager {
   Future<List<dynamic>> getPostComments(num postId) async {
     var response = await _dio
         .get("$_baseUrl${EndPoints.posts}/$postId${EndPoints.comments}");
+    // var response = await _dio
+    //     .get("$_baseUrl${EndPoints.posts}/59440${EndPoints.comments}");
     return response.data;
   }
 }

@@ -17,36 +17,10 @@ class PostsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.appName),
-        actions: [],
       ),
       body: BlocProvider(
         create: (context) => getIt<PostsCubit>()..fetchPosts(),
-        child: BlocBuilder<PostsCubit, PostsState>(
-          builder: (context, state) {
-
-            if (state is PostsInitial) {
-              return const LoadingItem();
-            }
-
-            if (state is PostsErrorState) {
-              return Container(
-                margin: const EdgeInsets.all(8),
-                child: const Center(
-                  child: Text(
-                    "Something went wrong, Please try again later",
-                    style: TextStyle(color: Colors.white, fontSize: 22),
-                  ),
-                ),
-              );
-            }
-
-            if (state is PostsSuccess) {
-              return const PostsPageBody();
-            }
-
-            return Container();
-          },
-        ),
+        child: const PostsPageBody(),
       ),
     );
   }

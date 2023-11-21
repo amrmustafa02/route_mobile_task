@@ -15,9 +15,8 @@ class PostsPageBody extends StatefulWidget {
 }
 
 class _PostsPageBodyState extends State<PostsPageBody> {
-
   final PagingController<int, PostEntity> _pagingController =
-      PagingController(firstPageKey: 1);
+      PagingController(firstPageKey: 100);
 
   @override
   void initState() {
@@ -41,16 +40,33 @@ class _PostsPageBodyState extends State<PostsPageBody> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      PagedListView<int, PostEntity>(
-        pagingController: _pagingController,
-        builderDelegate: PagedChildBuilderDelegate<PostEntity>(
-          firstPageProgressIndicatorBuilder: (context) => const LoadingItem(),
-          itemBuilder: (context, item, index) => PostItem(
-            postEntity: item,
-          ).animate().fadeIn(duration: const Duration(milliseconds: 500)),
-        ),
-      );
+  Widget build(BuildContext context) {
+    return BlocBuilder<PostsCubit, PostsState>(
+      builder: (context, state) {
+        if (state is PostsErrorState) {
+          return Container(
+            margin: const EdgeInsets.all(8),
+            child: const Center(
+              child: Text(
+                "Something went wrong, Please try again later",
+                style: TextStyle(color: Colors.white, fontSize: 22),
+              ),
+            ),
+          );
+        }
+
+        return PagedListView<int, PostEntity>(
+          pagingController: _pagingController,
+          builderDelegate: PagedChildBuilderDelegate<PostEntity>(
+            firstPageProgressIndicatorBuilder: (context) => const LoadingItem(),
+            itemBuilder: (context, item, index) => PostItem(
+              postEntity: item,
+            ).animate().fadeIn(duration: const Duration(milliseconds: 500)),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   void dispose() {

@@ -12,7 +12,7 @@ class PostsDetailsSuccess extends PostsDetailsState {
 }
 
 class PostsDetailsError extends PostsDetailsState {
-  String message;
+ final String message;
 
   PostsDetailsError({required this.message});
 }
