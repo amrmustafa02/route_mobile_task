@@ -8,9 +8,6 @@ Simple social app develope with clean architecture, solid and dependency injecti
 <img src="https://github.com/amrmustafa02/route_mobile_task/assets/78182930/6f0b5c53-b0e1-420e-8f8e-1548a034be7a" width="200">
 <img src="https://github.com/amrmustafa02/route_mobile_task/assets/78182930/f6e8dbaa-aacb-4de0-ba40-fc9e4680a444" width="200">
 
-## Demo
-https://www.linkedin.com/posts/amr-mustafa-58a80320b_flutter-github-mobileapp-activity-7091641142085062656-sA_m?utm_source=share&utm_medium=member_desktop
-
 
 ## Features
 
